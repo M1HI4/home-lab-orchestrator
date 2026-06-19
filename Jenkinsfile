@@ -28,7 +28,6 @@ pipeline {
 			steps {
 				dir('terraform') {
 					sh '''
-						export TF_CLI_CONFIG_FILE="${PWD}/terraformrc"
 						terraform init -no-color
 						terraform apply -auto-approve -no-color
 					'''
