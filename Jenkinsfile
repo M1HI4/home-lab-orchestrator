@@ -8,8 +8,12 @@ pipeline {
 		}
 		stage('Code Lint') {
 			steps {
-				sh 'python3 -m pip install flake8'
-				sh 'flake8 .'
+				sh '''
+					python3 -m venv venv
+					. venv/bin/activate
+					pip install flake8
+					flake8 . --max-line-length=120
+				'''
 			}
 		}
 		stage('Terraform fmt & validate') {
