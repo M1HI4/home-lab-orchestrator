@@ -27,12 +27,11 @@ pipeline {
 		stage('Terraform Apply') {
 			steps {
 				dir('terraform') {
-					// Если первый запуск, нужно инициализировать
-					sh 'terraform init -no-color'
-					sh 'terraform apply -auto-approve -no-color'
-					export TF_CLI_CONFIG_FILE="${WORKSPACE}/terraform/terraformrc"
-					terraform init -no-color
-					terraform apply -auto-approve -no-color
+					sh '''
+						export TF_CLI_CONFIG_FILE="${PWD}/terraformrc"
+						terraform init -no-color
+						terraform apply -auto-approve -no-color
+					'''
 				}
 			}
 		}
