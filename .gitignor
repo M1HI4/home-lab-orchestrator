@@ -1,0 +1,12 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+# Python
+__pycache__/
+*.pyc
+health.json
+report.txt
+# IDE и др.
+*.swp
+.vscode/
